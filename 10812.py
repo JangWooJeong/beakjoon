@@ -1,11 +1,14 @@
-n, m = input().split()
+import sys
 
-num = [str(x+1) for x in range(int(n))]
-num = ''.join(num)
+input = sys.stdin.readline
 
-for _ in range(int(m)):
+n, m = map(int, input().split())
+
+num = [str(x) for x in range(n+1)]
+
+for _ in range(m):
     i, j, k = map(int, input().split())
-    num = num[:i] + num[k+1:j+1] + num[i+1:k] + num[j:]
-    print(num)
+    num = num[:i] + num[k:j+1] + num[i:k] + num[j+1:]
 
-print(num)
+for i in range(1, n+1):
+    print(num[i], end=" ")
